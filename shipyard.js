@@ -55,4 +55,13 @@ function trainCrew(crewArr){
   return members
 };
 
+var rocket = {
+  fuel: 0,
+
+  addFuel: function(num){
+    this.fuel += num
+    console.log(" - Fuel Level: " + this.fuel)
+  },
+};
+
 launchpad(ourShip, crewMembers)
