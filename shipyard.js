@@ -17,6 +17,11 @@ function Ship(name){
     });
     return this.crew = crew
   };
+
+  this.captain = function(){
+    var capt_i = Math.floor(Math.random() * this.crew.length);
+    return this.crew[capt_i].name
+  };
 };
 
 var ourShip = new Ship("T.A.R.D.I.S.")
