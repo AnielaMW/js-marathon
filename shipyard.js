@@ -1,14 +1,16 @@
 // YOUR CODE GOES HERE
-function launchpad(ship, crew){
+function launchpad(ship, crew, rocket){
   console.log("Preflight Procedures Initialized\n" +
-  "Preparing " + ship.name)
-  ship.loadCrew(crew)
-  console.log(ship.captain() + " to Command Voyage")
+  "Preparing " + ship.name);
+  ship.loadCrew(crew);
+  console.log(ship.captain() + " to Command Voyage");
+  ship.mountPropulsion(rocket);
 };
 
 function Ship(name){
   this.name = name
   this.crew = []
+  this.propulsion = null
 
   this.loadCrew = function(arr){
     var crew = []
@@ -22,6 +24,11 @@ function Ship(name){
   this.captain = function(){
     var capt_i = Math.floor(Math.random() * this.crew.length);
     return this.crew[capt_i].name
+  };
+
+  this.mountPropulsion = function(object){
+    console.log(" - Propulsion mounted")
+    return object
   };
 };
 
@@ -77,4 +84,4 @@ var rocket = {
   },
 };
 
-launchpad(ourShip, crewMembers)
+launchpad(ourShip, crewMembers, rocket)
