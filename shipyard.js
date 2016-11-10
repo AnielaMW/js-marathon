@@ -1,13 +1,15 @@
 // YOUR CODE GOES HERE
 function launchpad(ship, crew, rocket){
   console.log("Preflight Procedures Initialized\n" +
-  "Preparing " + ship.name);
+  "Preparing " + ship.name + "\nAssemble Crew");
   ship.loadCrew(crew);
   console.log(ship.captain() + " to Command Voyage");
   ship.mountPropulsion(rocket);
   ship.takeoff(rocket);
   rocket.addFuel(10);
   ship.takeoff(rocket);
+  console.log("Assemble " + fleet.name + " Fleet")
+  fleet.build(shipsName);
 };
 
 function Ship(name){
@@ -30,7 +32,7 @@ function Ship(name){
   };
 
   this.mountPropulsion = function(object){
-    console.log(" - Propulsion mounted")
+    console.log("Propulsion mounted")
     return object
   };
 
@@ -39,7 +41,7 @@ function Ship(name){
       console.log("   WHEEOOOOSHHHHHFWOOO WHEEOOOOOSHHHHHFWOOOO")
     }
     else {
-      console.log(" - Takeoff was unsuccessful")
+      console.log(" # Takeoff was unsuccessful #")
     };
   };
 };
@@ -47,14 +49,14 @@ function Ship(name){
 var ourShip = new Ship("T.A.R.D.I.S.")
 
 var crewNames = ["The Doctor",
-  // "Rose Tyler",
-  // "Martha Jones",
-  // "Donna Noble",
+  "Rose Tyler",
+  "Martha Jones",
+  "Donna Noble",
   "River Song (aka Melody Pond)",
   "Captain Jack Harkness",
-  // "Amy Pond",
-  // "Rory Williams-Pond",
-  // "Clara Oswald",
+  "Amy Pond",
+  "Rory Williams-Pond",
+  "Clara Oswald",
   "Ashildr (aka Me)"
 ]
 
@@ -79,20 +81,44 @@ var rocket = {
 
   addFuel: function(num){
     this.fuel += num
-    console.log(" - Fuel Level: " + this.fuel)
+    console.log("Fuel Level: " + this.fuel)
   },
 
   fire: function(){
     if (this.fuel > 0){
       this.fuel -= 1
-      console.log(" - Rockets Fired\n" +
-      " - Fuel Level: " + this.fuel)
+      console.log("Rockets Fired\n" +
+      "Fuel Level: " + this.fuel)
       return true
     }
     else {
-      console.log(" - Rockets Failed to Fire")
+      console.log(" # Rockets Failed to Fire #")
       return false
     }
+  },
+};
+
+var shipsName = ["Chula Ambulance",
+"Buccaneer",
+"SS Pentallian",
+"Sanctuary Base 6 Rocket",
+"SS Madame de Pompadour",
+"SS Marie Antoinette",
+"Judoon rocket",
+"Platform One",
+"Satellite 5",
+"Starship UK"]
+
+var fleet = {
+  name: "Torchwood",
+  ships: [],
+  build: function(shipsName){
+    var shipsArr = []
+    for (var i = 0; i < shipsName.length; i++){
+       shipsArr.push(new Ship(shipsName[i]))
+       console.log(" - " + shipsName[i] + "has Joined the Fleet")
+    };
+    return this.ship = shipsArr
   },
 };
 
