@@ -5,6 +5,9 @@ function launchpad(ship, crew, rocket){
   ship.loadCrew(crew);
   console.log(ship.captain() + " to Command Voyage");
   ship.mountPropulsion(rocket);
+  ship.takeoff(rocket);
+  rocket.addFuel(10);
+  ship.takeoff(rocket);
 };
 
 function Ship(name){
@@ -29,6 +32,15 @@ function Ship(name){
   this.mountPropulsion = function(object){
     console.log(" - Propulsion mounted")
     return object
+  };
+
+  this.takeoff = function(object){
+    if (object.fire()){
+      console.log("   WHEEOOOOSHHHHHFWOOO WHEEOOOOOSHHHHHFWOOOO")
+    }
+    else {
+      console.log(" - Takeoff was unsuccessful")
+    };
   };
 };
 
