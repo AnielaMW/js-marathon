@@ -3,6 +3,7 @@ function launchpad(ship, crew){
   console.log("Preflight Procedures Initialized\n" +
   "Preparing " + ship.name)
   ship.loadCrew(crew)
+  console.log(ship.captain() + " to Command Voyage")
 };
 
 function Ship(name){
