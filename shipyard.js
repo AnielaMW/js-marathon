@@ -1,24 +1,35 @@
 // YOUR CODE GOES HERE
-function launchpad(ship){
+function launchpad(ship, crew){
   console.log("Preflight Procedures Initialized\n" +
   "Preparing " + ship.name)
+  ship.loadCrew(crew)
 };
 
 function Ship(name){
   this.name = name
+  this.crew = []
+
+  this.loadCrew = function(arr){
+    var crew = []
+    arr.forEach(function(person){
+      crew.push(person);
+      console.log(" - " + person.name + " is aboard.")
+    });
+    return this.crew = crew
+  };
 };
 
 var ourShip = new Ship("T.A.R.D.I.S.")
 
 var crewNames = ["The Doctor",
-  "Rose Tyler",
-  "Martha Jones",
-  "Donna Noble",
+  // "Rose Tyler",
+  // "Martha Jones",
+  // "Donna Noble",
   "River Song (aka Melody Pond)",
   "Captain Jack Harkness",
-  "Amy Pond",
-  "Rory Williams-Pond",
-  "Clara Oswald",
+  // "Amy Pond",
+  // "Rory Williams-Pond",
+  // "Clara Oswald",
   "Ashildr (aka Me)"
 ]
 
@@ -38,4 +49,4 @@ function trainCrew(crewArr){
   return members
 };
 
-launchpad(ourShip)
+launchpad(ourShip, crewMembers)
