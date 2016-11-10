@@ -22,9 +22,20 @@ var crewNames = ["The Doctor",
   "Ashildr (aka Me)"
 ]
 
-function CrewMembers(name){
+function CrewMember(name){
   this.name = name
   this.trained = false
+};
+
+var crewMembers = trainCrew(crewNames)
+
+function trainCrew(crewArr){
+  var members = []
+  for (var i = 0; i < crewArr.length; i++){
+     members.push(new CrewMember(crewArr[i]))
+     members[i].trained = true
+  };
+  return members
 };
 
 launchpad(ourShip)
