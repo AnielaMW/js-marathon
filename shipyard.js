@@ -62,6 +62,19 @@ var rocket = {
     this.fuel += num
     console.log(" - Fuel Level: " + this.fuel)
   },
+
+  fire: function(){
+    if (this.fuel > 0){
+      this.fuel -= 1
+      console.log(" - Rockets Fired\n" +
+      " - Fuel Level: " + this.fuel)
+      return true
+    }
+    else {
+      console.log(" - Rockets Failed to Fire")
+      return false
+    }
+  },
 };
 
 launchpad(ourShip, crewMembers)
